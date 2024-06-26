@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Учет картриджей и принтеров</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Учет картриджей и принтеров</h1>
+</header>
+<div class="container">
+    <div id="printer-list">
+        <h2>Список принтеров</h2>
+        <ul id="printers">
+            <!-- Printer items will be dynamically populated here -->
+        </ul>
+    </div>
+    <div id="cartridge-list">
+        <h2>Список картриджей</h2>
+        <ul id="cartridges">
+            <!-- Cartridge items will be dynamically populated here -->
+        </ul>
+    </div>
+</div>
+<div class="form-container">
+    <h2>Добавить новый принтер или картридж</h2>
+    <form id="add-item-form">
+        <label for="item-type">Выберите тип (принтер/картридж):</label>
+        <select id="item-type">
+            <option value="printer">Принтер</option>
+            <option value="cartridge">Картридж</option>
+        </select>
+        <label for="model">Модель:</label>
+        <input type="text" id="model" required>
+        <label for="color">Цвет:</label>
+        <input type="text" id="color" required>
+        <label for="brand">Фирма:</label>
+        <input type="text" id="brand" required>
+        <label for="stock">На складе:</label>
+        <input type="number" id="stock" required>
+        <label for="working">Рабочих:</label>
+        <input type="number" id="working" required>
+        <label for="faulty">Не работают:</label>
+        <input type="number" id="faulty" required>
+        <label for="inUse">В использовании:</label>
+        <input type="number" id="inUse" required>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
