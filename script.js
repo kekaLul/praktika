@@ -5,10 +5,12 @@ if (window.localStorage.getItem('printers')) {
     { model: 'Epson Workforce', color: 'Color', brand: 'Epson', stock: 5, working: 4, faulty: 0, inUse: 1 }];
 window.localStorage.setItem('printers', JSON.stringify(printers));
 // Sample data for cartridges
-let cartridges = [
-    { model: 'Canon PG-245', color: 'Black', brand: 'Canon', stock: 20, inPrinter: 15, damaged: 2, inStock: 3 },
-    { model: 'HP 61', color: 'Color', brand: 'HP', stock: 10, inPrinter: 8, damaged: 1, inStock: 1 }
-];
+let cartridges = [];
+    if (window.localStorage.getItem('cartridges')) {
+        cartridges = JSON.parse(window.localStorage.getItem('cartridges'));
+    } else cartridges = [{ model: 'Canon PG-245', color: 'Black', brand: 'Canon', stock: 20, inPrinter: 15, damaged: 2, inStock: 3 },
+        { model: 'HP 61', color: 'Color', brand: 'HP', stock: 10, inPrinter: 8, damaged: 1, inStock: 1 }];
+window.localStorage.setItem('cartridges', JSON.stringify(cartridges));
 
 // Populate printer list
 const printerList = document.getElementById('printers');
@@ -53,6 +55,7 @@ form.addEventListener('submit', function(event) {
         renderPrinters();
     } else if (itemType === 'cartridge') {
         cartridges.push({ model, color, brand, stock, inPrinter: 0, damaged: 0, inStock: stock });
+        window.localStorage.setItem('cartridge', JSON.stringify(cartridges));
         renderCartridges();
     }
 
