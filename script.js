@@ -55,7 +55,7 @@ form.addEventListener('submit', function(event) {
         renderPrinters();
     } else if (itemType === 'cartridge') {
         cartridges.push({ model, color, brand, stock, inPrinter: 0, damaged: 0, inStock: stock });
-        window.localStorage.setItem('cartridge', JSON.stringify(cartridges));
+        window.localStorage.setItem('cartridges', JSON.stringify(cartridges));
         renderCartridges();
     }
 
