@@ -1,9 +1,9 @@
-// Sample data for printers
-let printers = [
-    { model: 'HP LaserJet Pro', color: 'Black', brand: 'HP', stock: 10, working: 8, faulty: 1, inUse: 1 },
-    { model: 'Epson Workforce', color: 'Color', brand: 'Epson', stock: 5, working: 4, faulty: 0, inUse: 1 }
-];
-
+let printers = [];
+if (window.localStorage.getItem('printers')) {
+    printers = JSON.parse(window.localStorage.getItem('printers'));
+  } else printers = [{ model: 'HP LaserJet Pro', color: 'Black', brand: 'HP', stock: 10, working: 8, faulty: 1, inUse: 1 },
+    { model: 'Epson Workforce', color: 'Color', brand: 'Epson', stock: 5, working: 4, faulty: 0, inUse: 1 }];
+window.localStorage.setItem('printers', JSON.stringify(printers));
 // Sample data for cartridges
 let cartridges = [
     { model: 'Canon PG-245', color: 'Black', brand: 'Canon', stock: 20, inPrinter: 15, damaged: 2, inStock: 3 },
@@ -49,6 +49,7 @@ form.addEventListener('submit', function(event) {
 
     if (itemType === 'printer') {
         printers.push({ model, color, brand, stock, working, faulty, inUse });
+        window.localStorage.setItem('printers', JSON.stringify(printers));
         renderPrinters();
     } else if (itemType === 'cartridge') {
         cartridges.push({ model, color, brand, stock, inPrinter: 0, damaged: 0, inStock: stock });
